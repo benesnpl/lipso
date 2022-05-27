@@ -507,7 +507,7 @@ resource "aws_customer_gateway" "virginia" {
   type                = "ipsec.1"
   static_routes_only  = false
   tags = {
-    Name = join("", [var.coid, "-Miami-ipsec"])
+    Name = join("", [var.coid, "-NY-ipsec"])
   }
 }
 
@@ -517,6 +517,16 @@ resource "aws_customer_gateway" "virginia" {
   type                = "ipsec.1"
   static_routes_only  = false
   tags = {
-    Name = join("", [var.coid, "-Miami-ipsec"])
+    Name = join("", [var.coid, "-Virginia-ipsec"])
   }
+}
+
+  data "aws_ec2_transit_gateway_vpn_attachment" "ny_attach" {
+  transit_gateway_id = aws_ec2_transit_gateway.main_tgw.id
+  vpn_connection_id  = aws_vpn_connection.NY.id
+}
+
+data "aws_ec2_transit_gateway_vpn_attachment" "Virginia_attach" {
+  transit_gateway_id = aws_ec2_transit_gateway.main_tgw.id
+  vpn_connection_id  = aws_vpn_connection.Virginia.id
 }
