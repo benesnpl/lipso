@@ -2,6 +2,13 @@ variable "aws_region" {
 	default = null
 }
 
+variable "ny_ip" {
+	default = null
+}
+
+variable "virginia" {
+	default = null
+}
 variable "vpc_cidr" {
 	default = null
 }
