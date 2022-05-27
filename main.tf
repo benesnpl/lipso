@@ -521,12 +521,3 @@ resource "aws_customer_gateway" "virginia" {
   }
 }
 
-  data "aws_ec2_transit_gateway_vpn_attachment" "ny_attach" {
-  transit_gateway_id = aws_ec2_transit_gateway.main_tgw.id
-  vpn_connection_id  = aws_vpn_connection.NY.id
-}
-
-data "aws_ec2_transit_gateway_vpn_attachment" "Virginia_attach" {
-  transit_gateway_id = aws_ec2_transit_gateway.main_tgw.id
-  vpn_connection_id  = aws_vpn_connection.Virginia.id
-}
