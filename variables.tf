@@ -192,3 +192,11 @@ variable "private_eni_1" {
 variable "private_eni_2" {
 	default = null
 }
+
+variable "aws_access_key_id"
+	default = null
+}
+
+variable "aws_secret_access_key"
+	default = null
+}
