@@ -480,3 +480,43 @@ resource "aws_ec2_transit_gateway_route" "mia_vpn" {
   transit_gateway_route_table_id = aws_ec2_transit_gateway.main_tgw.association_default_route_table_id
   blackhole                      = false
 }
+
+ resource "aws_customer_gateway" "ny" {
+  bgp_asn    = 65302
+  ip_address = var.ny_ip
+  type       = "ipsec.1"
+
+  tags = {
+    Name = join("", [var.coid, "-NewYork-CGW"])
+  }
+}
+
+resource "aws_customer_gateway" "virginia" {
+  bgp_asn    = 65303
+  ip_address = var.ny_ip
+  type       = "ipsec.1"
+
+  tags = {
+    Name = join("", [var.coid, "-Virginia-CGW"])
+  }
+}
+
+ resource "aws_vpn_connection" "NY" {
+  transit_gateway_id  = aws_ec2_transit_gateway.main_tgw.id
+  customer_gateway_id = aws_customer_gateway.ny.id
+  type                = "ipsec.1"
+  static_routes_only  = false
+  tags = {
+    Name = join("", [var.coid, "-Miami-ipsec"])
+  }
+}
+
+ resource "aws_vpn_connection" "Virginia" {
+  transit_gateway_id  = aws_ec2_transit_gateway.main_tgw.id
+  customer_gateway_id = aws_customer_gateway.virginia.id
+  type                = "ipsec.1"
+  static_routes_only  = false
+  tags = {
+    Name = join("", [var.coid, "-Miami-ipsec"])
+  }
+}
