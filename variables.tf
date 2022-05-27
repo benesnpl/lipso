@@ -6,7 +6,7 @@ variable "ny_ip" {
 	default = null
 }
 
-variable "virginia" {
+variable "virginia_ip" {
 	default = null
 }
 variable "vpc_cidr" {
