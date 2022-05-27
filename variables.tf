@@ -201,10 +201,10 @@ variable "aws_secret_access_key" {
 	default = null
 }
 
-variable "lb_target_1"
+variable "lb_target_1" {
 	default = null
 }
 
-variable "lb_target_2"
+variable "lb_target_2" {
 	default = null
 }
