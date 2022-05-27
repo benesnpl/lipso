@@ -493,7 +493,7 @@ resource "aws_ec2_transit_gateway_route" "mia_vpn" {
 
 resource "aws_customer_gateway" "virginia" {
   bgp_asn    = 65303
-  ip_address = var.ny_ip
+  ip_address = var.virginia_ip
   type       = "ipsec.1"
 
   tags = {
